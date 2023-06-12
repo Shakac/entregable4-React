@@ -1,0 +1,17 @@
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'lato', sans-serif;
+}
+
+h2 {
+    margin-top: 0;
+}
+input, button {
+    font-family: inherit;
+}

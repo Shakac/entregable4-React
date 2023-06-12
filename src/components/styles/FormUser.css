@@ -1,0 +1,24 @@
+.form-container {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    background-color: #0004;
+    backdrop-filter: blur(2px);
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background-color: white;
+    padding: 2em, 1.5em, 2.5em;
+    border-radius: 0.7em; 
+}
+
+.form__title {
+    text-align: center;
+    color: rgb(20, 20, 101);
+    margin-bottom: 1em;
+    font-weight: 700;
+}
