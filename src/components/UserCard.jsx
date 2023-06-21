@@ -1,5 +1,5 @@
 
-const UserCard = ({ user, deleteUserById, setUpdateInfo }) => {
+const UserCard = ({ user, deleteUserById, setUpdateInfo, setIsCloseForm }) => {
 
     const handleDelete = () => {
         deleteUserById('/users', user.id)
@@ -7,6 +7,7 @@ const UserCard = ({ user, deleteUserById, setUpdateInfo }) => {
 
     const handleEdit = () => {
         setUpdateInfo(user)
+        setIsCloseForm(false)
     }
 
   return (
@@ -25,7 +26,7 @@ const UserCard = ({ user, deleteUserById, setUpdateInfo }) => {
         <button onClick={handleDelete}><i className='bx bx-trash'></i></button>
         <button onClick={handleEdit}><i className='bx bx-edit' ></i></button>
     </article>
-  )
-}
+  );
+};
 
 export default UserCard

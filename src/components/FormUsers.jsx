@@ -1,34 +1,50 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import './styles/FormUsers.css'
+import "./styles/FormUser.css";
 
 const FormUsers = ({ createNewUser, updateInfo, updateUserById, setUpdateInfo }) => {
 
-    const { register, reset, handleSubmit } = useForm()
+    const { register, reset, handleSubmit } = useForm();
 
     useEffect(() => {
-        reset(updateInfo)
-    }, [updateInfo])
+        reset(updateInfo);
+    }, [updateInfo]);
 
     const submit = data => {
         if (updateInfo) {
             //update
+            updateUserById('./users', updateInfo.id, data );
+            setUpdateInfo();
         } else {
             //crear
+        createNewUser('/users', data);
         }
-        createNewUser('/users', data)
         reset({
-            email: '',
-            password: '',
-            last_name: '',
-            first_name: '',
-            birthday: ''
-        })
-    }
+            email: "",
+            password: "",
+            last_name: "",
+            first_name: "",
+            birthday: "",
+        });
+        setIsCloseForm(true)
+    };
+
+const handleExit = () => {
+    reset({
+        email: "",
+        password: "",
+        last_name: "",
+        first_name: "",
+        birthday: "",
+    })
+    setIsCloseForm(true)
+    setUpdateInfo()
+}
 
   return (
     <form className="form" onSubmit={handleSubmit(submit)}> 
-    <h2 className="form___title">Form Users</h2>
+            <h2 className="form___title">Form Users</h2>
+            <div onClick={handleExit} className="form__x">X</div>
             <div className="form__section" >
                 <label className="form__label" htmlFor="email">Email</label>
                 <input className="form__input" {...register('email')} id="email" type="text" />
