@@ -16,8 +16,7 @@ function App() {
     getAllUsers,
     createNewUser,
     deleteUserById,
-    updateUserById]
-    = useFetch(baseUrl)
+    updateUserById]= useFetch(baseUrl)
 
   useEffect(() => {
     getAllUsers('/users')
@@ -33,26 +32,27 @@ function App() {
       <button onClick={handleOpenForm}>
         <h2>Open Form</h2>
       </button>
-      <div className={`form-container ${isCloseForm} && /> 'form__close'}`}>
+      <div className={`form__container ${isCloseForm? 'form__close':''}`}>
+      {/* <div className={`form-container ${isCloseForm} && /> 'form__close'}`}>  si vez tienees mal formulaod la condicional  */}
         <FormUsers
           createNewUser={createNewUser}
           updateInfo={updateInfo}
           updateUserById={updateUserById}
-          setUpdateInfo={setUpdateInfo} 
+          setUpdateInfo={setUpdateInfo}
           setIsCloseForm={setIsCloseForm}
-        /> 
+        />
       </div>
       <div>
         {Users?.map(user => (
           <UserCard
             key={user.id}
             user={user}
-            deleteUserById={deleteUserById} 
+            deleteUserById={deleteUserById}
             setUpdateInfo={setUpdateInfo}
             setIsCloseForm={setIsCloseForm}
           />
         ))
-      }
+        }
       </div>
     </div >
   )
